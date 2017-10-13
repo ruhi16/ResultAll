@@ -52,7 +52,7 @@ Route::get('/clssec',function(){
 
 
 Route::get('/addSec/{n}', function($id){
-    $ses = App\Session::where('Status', '=', 'Current')->get();
+    $ses = App\Session::where('Status', '=', 'Current')->first();
     $cls = App\Clss::find($id);
 
     $m = DB::table('clss_section')
@@ -61,11 +61,13 @@ Route::get('/addSec/{n}', function($id){
 
     $n = DB::table('sections')        
         ->max('id');
+    echo $ses->id;
+    //dd($ses);
 
     //echo "Max:".$m;
     //echo "Max:".$n;
     if($m < $n){
-        $cls->sections()->attach(++$m,['session_id'=>$ses]);
+        $cls->sections()->attach(++$m,['session_id'=>$ses->id]);
     }
     // foreach($cls->sections as $c){
     //     echo $c."<br>";
