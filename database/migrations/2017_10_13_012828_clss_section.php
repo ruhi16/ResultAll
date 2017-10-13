@@ -14,7 +14,7 @@ class ClssSection extends Migration
     public function up()
     {
         //
-        Schema::create('clss-section', function (Blueprint $table) {
+        Schema::create('clss_section', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('clss_id');
             $table->integer('section_id');
