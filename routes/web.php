@@ -33,7 +33,11 @@ Route::post('/addSession', 'AdSettingController@addSession');
 Route::get('/editSession/{n}', 'AdSettingController@editSession');
 
 Route::get('/clssec',function(){
-    return view ('/setting/clssec');
+    $clss = App\Clss::all();
+    $section = App\Section::all();
+    return view ('/setting/clssec')
+    ->with('clss', $clss)
+    ->with('section', $section);
 });
 
 

@@ -57,36 +57,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Default</td>
-                    <td>Defaultson</td>
-                    <td>def@somemail.com</td>
-                </tr>      
-                <tr class="success">
-                    <td>Success</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                </tr>
-                <tr class="danger">
-                    <td>Danger</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr class="info">
-                    <td>Info</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr class="warning">
-                    <td>Warning</td>
-                    <td>Refs</td>
-                    <td>bo@example.com</td>
-                </tr>
-                <tr class="active">
-                    <td>Active</td>
-                    <td>Activeson</td>
-                    <td>act@example.com</td>
-                </tr>
+                @foreach($clss as $cl)
+                    <tr>
+                        <td>{{$cl->id}}</td>
+                        <td>{{$cl->cls}}</td>
+                        <td>
+                        @foreach($cl->sections as $s)
+                            {{$s->sec}}
+                        @endforeach
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div><!-- end of panel-default -->
@@ -116,16 +97,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>af</td>
-                    <td>dfa</td>
-                    <td>fdaf</td>
-                </tr>
-                <tr>
-                    <td>faf</td>
-                    <td>fas</td>
-                    <td>fdfa</td>
-                </tr>
+                @foreach($clss as $cl)
+                    <tr>
+                        <td>{{$cl->id}}</td>
+                        <td>{{$cl->cls}}</td>
+                        <td>{{$cl->status}}</td>
+                    </tr>
+                @endforeach
+                
                 </tbody>
             </table>
             </div>
@@ -150,16 +129,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>af</td>
-                    <td>dfa</td>
-                    <td>fdaf</td>
-                </tr>
-                <tr>
-                    <td>faf</td>
-                    <td>fas</td>
-                    <td>fdfa</td>
-                </tr>
+                @foreach($section as $sectn)
+                    <tr>
+                        <td>{{$sectn->id}}</td>
+                        <td>{{$sectn->sec}}</td>
+                        <td>{{$sectn->status}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
             </div>
