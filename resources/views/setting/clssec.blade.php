@@ -54,6 +54,7 @@
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Email</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,6 +66,10 @@
                         @foreach($cl->sections as $s)
                             {{$s->sec}}
                         @endforeach
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
+                            <button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-minus"></span></button>
                         </td>
                     </tr>
                 @endforeach
