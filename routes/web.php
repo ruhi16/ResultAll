@@ -43,6 +43,63 @@ Route::get('/clssec',function(){
 
 
 
+
+
+
+
+
+
+
+
+Route::get('/addSec/{n}', function($id){
+    $ses = App\Session::where('Status', '=', 'Current')->get();
+    $cls = App\Clss::find($id);
+
+    $m = DB::table('clss_section')
+        ->where('clss_id','=', $id)
+        ->max('section_id');
+
+    $n = DB::table('sections')        
+        ->max('id');
+
+    //echo "Max:".$m;
+    //echo "Max:".$n;
+    if($m < $n){
+        $cls->sections()->attach(++$m,['session_id'=>$ses]);
+    }
+    // foreach($cls->sections as $c){
+    //     echo $c."<br>";
+    // }
+    
+    return back();
+});
+
+
+Route::get('/delSec/{n}', function($id){
+    $ses = App\Session::where('Status', '=', 'Current')->get();
+    $cls = App\Clss::find($id);
+
+    $m = DB::table('clss_section')
+        ->where('clss_id','=', $id)
+        ->max('section_id');
+
+    $n = DB::table('sections')        
+        ->max('id');
+
+    //echo "Max:".$m;
+    //echo "Max:".$n;
+    if($m > 0){
+        $cls->sections()->detach($m,['session_id'=>$ses]);
+    }
+    // foreach($cls->sections as $c){
+    //     echo $c."<br>";
+    // }
+    
+    return back();
+});
+
+
+
 Route::post('/register-submit', 'AdminController@registerSubmit');
 Route::post('/login-submit', 'AdminController@loginSubmit');
 

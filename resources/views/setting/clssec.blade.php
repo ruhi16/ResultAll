@@ -68,8 +68,8 @@
                         @endforeach
                         </td>
                         <td>
-                            <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
-                            <button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-minus"></span></button>
+                            <a href="{!! url('/addSec',[$cl->id]) !!}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></a>
+                            <a href="{!! url('/delSec',[$cl->id]) !!}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-minus"></span></a>
                         </td>
                     </tr>
                 @endforeach
