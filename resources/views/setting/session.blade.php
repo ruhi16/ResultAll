@@ -40,21 +40,22 @@
                 <h2>Current Session is: {{$session->Name}} <small>From {{$session->stDate}} to {{$session->enDate}} </small></h2>
               @endif
             @endforeach
+				<div class="row">
 		   <div class="panel panel-default">
-			<!-- Default panel contents -->
-			<div class="panel-heading">
-				<h3 class="panel-title pull-left">
-					Session Details
-            	</h3>
-					<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
-					  Add New Session
-					</button>
-					<div class="clearfix"></div>
-			
-			</div>
-			{{--  <div class="panel-body">
-				<p>...</p>
-			</div>  --}}
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<h3 class="panel-title pull-left">
+							Session Details
+									</h3>
+							<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+								Add New Session
+							</button>
+							<div class="clearfix"></div>
+					
+					</div>
+					{{--  <div class="panel-body">
+						<p>...</p>
+					</div>  --}}
 
 
 
@@ -74,20 +75,78 @@
 			<tbody>
                 @foreach($sessions as $session)
 				    <tr>
-                         <th scope="row">{{$session->id}}</th>
-                         <th>{{$session->Name}}</th>
-                         <td>{{$session->stDate}}</td>
-                         <td>{{$session->enDate}}</td>
-                         <td>{{$session->Status}}</td>
-                         <td><button class="btn btn-danger">Edit</button>
-												 		 <a href="{!! url('/editSession',[$session->id]) !!}" class="btn btn-primary">Edit</a>
-												 </td>
+							<th scope="row">{{$session->id}}</th>
+							<th>{{$session->Name}}</th>
+							<td>{{$session->stDate}}</td>
+							<td>{{$session->enDate}}</td>
+							<td>{{$session->Status}}</td>
+							<td><button class="btn btn-danger">Edit</button>
+									<a href="{!! url('/editSession',[$session->id]) !!}" class="btn btn-primary">Edit</a>
+							</td>
 				    </tr>
                 @endforeach
 			</tbody>
 			</table>
+		</div><!--/panel starting div -->
+    </div><!--/1st row within 2nd column -->
+
+
+
+
+
+
+
+
+
+
+		<div class="row">
+			<h2>Examination Details in the Current Session <small>From {{$session->stDate}} to {{$session->enDate}} </small></h2>
+			<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<h3 class="panel-title pull-left">Examination Details	</h3>
+							<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+								Add New Exam
+							</button>
+							<div class="clearfix"></div>					
+					</div>
+					{{--  <div class="panel-body">
+						<p>...</p>
+					</div>  --}}
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+								<th>Sl</th>
+								<th>Examinations</th>
+								<th>Category in Each Term</th>
+								<th>Schedule Month</th>
+								<th>Status</th>
+								<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($sessions as $session)
+									<tr>
+										<th scope="row">{{$session->id}}</th>
+										<th>{{$session->Name}}</th>
+										<td>{{$session->stDate}}</td>
+										<td>{{$session->enDate}}</td>
+										<td>{{$session->Status}}</td>
+										<td><button class="btn btn-danger">Edit</button>
+												<a href="{!! url('/editSession',[$session->id]) !!}" class="btn btn-primary">Edit</a>
+										</td>
+									</tr>
+								@endforeach
+							</tbody>
+							</table>
+		</div><!--/panel starting div -->
 		</div>
-       		
+
+
+
+
+
+
 
 
 
