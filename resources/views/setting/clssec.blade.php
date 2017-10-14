@@ -51,10 +51,11 @@
             
                 <thead>
                 <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                    <th>Action</th>
+                    <th class="text-center">SL No</th>
+                    <th class="text-center">Class</th>
+                    <th class="text-center">Sections</th>
+                    <th class="text-center">Subjects</th>
+                    <th class="text-center">Subjects</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -66,11 +67,11 @@
                         @foreach($cl->sections as $s)
                             {{$s->sec}}
                         @endforeach
+                        <a href="{!! url('/addSec',[$cl->id]) !!}" class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-plus"></span></a>                        
+                        <a href="{!! url('/delSec',[$cl->id]) !!}" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-minus"></span></a>
                         </td>
-                        <td>
-                            <a href="{!! url('/addSec',[$cl->id]) !!}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></a>
-                            <a href="{!! url('/delSec',[$cl->id]) !!}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-minus"></span></a>
-                        </td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 @endforeach
                 </tbody>
