@@ -10,7 +10,7 @@
 
 <div class="container">
 	
-	<h1 class="page-header">Session Details ...</h1>
+	<h1 class="page-header">Examination Details ...</h1>
 	<ol class="breadcrumb">
 		<li><a href="#">Home</a></li>
 		<li><a href="#">Library</a></li>
