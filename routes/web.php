@@ -46,6 +46,20 @@ Route::get('/delSec/{n}', 'AdSettingController@delSec');
 
 
 
+Route::get('/examsch', function(){
+    $sessions = App\Session::all();
+    $exms = App\Exam::all();
+    $exmtypes = App\Extype::all();
+
+    return view('/setting/exam')
+    ->with('sessions', $sessions)
+    ->with('exms', $exms)
+    ->with('exmtypes', $exmtypes);
+});
+
+
+
+
 Route::post('/register-submit', 'AdminController@registerSubmit');
 Route::post('/login-submit', 'AdminController@loginSubmit');
 
