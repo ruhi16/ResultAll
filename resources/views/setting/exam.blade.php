@@ -53,36 +53,41 @@
 							</button>
 							<div class="clearfix"></div>					
 					</div>
-					{{--  <div class="panel-body">
-						<p>...</p>
-					</div>  --}}
-						<table class="table table-bordered">
+							<table class="table table-bordered">
 							<thead>
 								<tr>
-								<th>Sl</th>
-								<th>Examinations</th>
-								<th>Category in Each Term</th>
-								<th>Schedule Month</th>
-								<th>Status</th>
-								<th>Action</th>
+									<th>Sl{{$rec}}</th>
+									<th>Examinations</th>
+									<th>Category in Each Term</th>
+									<th>Schedule Month</th>
+									<th>Status</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($exms as $ex)
+									<?php $flag = false; ?>
 									<tr>
-										<th scope="row">{{$ex->id}}</th>
-										<th>{{$ex->name}}       </th>                                        
-										<td>
-                                            @foreach($ex->extypes as $ext)
-                                                {{$ext->type}} <br>
-                                            @endforeach
-                                        </td>
-                                        <td>{{$ex->schtime}}    </td>										
-										<td>{{$ex->status}}     </td>
-										<td>
-                                            {{--  <button class="btn btn-danger">Edit</button>
-											<a href="{!! url('/editSession',[$session->id]) !!}" class="btn btn-primary">Edit</a>  --}}
-										</td>
+										<th rowspan="2">{{$ex->id}}</th>
+										<th rowspan="2">{{$ex->name}}       </th>                                        										
+										@foreach($exmtypes as $extp)
+											@if( $flag == true)
+												<tr>													
+													<td>{{$extp->type}} </td>													
+													<td><a href="{!! url('/editSession',[$session->id]) !!}" class="btn btn-primary">Edit</a></td>
+												</tr>
+											@else
+												<td>{{$extp->type}} </td>
+												<td><a href="{!! url('/editSession',[$session->id]) !!}" class="btn btn-primary">Edit</a></td>
+												<td rowspan="2">{{$ex->schtime}}    </td>										
+												<td rowspan="2">{{$ex->status}}     </td>
+												<td rowspan="2">{{$ex->status}}     </td>
+											@endif
+											<?php $flag = true; ?>
+										@endforeach
+                                        
+                                        
+										
 									</tr>
 								@endforeach
 							</tbody>

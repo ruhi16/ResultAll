@@ -51,10 +51,13 @@ Route::get('/examsch', function(){
     $exms = App\Exam::all();
     $exmtypes = App\Extype::all();
 
+    $rec = App\Extype::count();
+
     return view('/setting/exam')
     ->with('sessions', $sessions)
     ->with('exms', $exms)
-    ->with('exmtypes', $exmtypes);
+    ->with('exmtypes', $exmtypes)
+    ->with('rec', $rec);
 });
 
 
