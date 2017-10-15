@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ExamExtype extends Migration
+class CreateClssExamExtypeStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class ExamExtype extends Migration
      */
     public function up()
     {
-        Schema::create('exam_extype', function (Blueprint $table) {
+        Schema::create('clss_exam_extype_status', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('clss_id');
             $table->integer('exam_id');
             $table->integer('extype_id');
-            $table->integer('session_id');
+            $table->boolean('active');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class ExamExtype extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exam_extype');
+        Schema::dropIfExists('clss_exam_extype_status');
     }
 }

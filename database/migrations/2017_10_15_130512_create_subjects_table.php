@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ExamExtype extends Migration
+class CreateSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class ExamExtype extends Migration
      */
     public function up()
     {
-        Schema::create('exam_extype', function (Blueprint $table) {
+        Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('exam_id');
-            $table->integer('extype_id');
-            $table->integer('session_id');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class ExamExtype extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exam_extype');
+        Schema::dropIfExists('subjects');
     }
 }

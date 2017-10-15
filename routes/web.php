@@ -28,6 +28,17 @@ Route::get('/setting', function(){
     return view('/setting/setting');
 });
 
+
+Route::get('/test', function(){
+    $cls = App\Clss::all();
+    $sts = DB::table('clss_exam_extype_status')->get();
+
+    return view('test')
+        ->with('cls', $cls)
+        ->with('sts', $sts);
+});
+
+
 Route::get('/session', 'AdSettingController@session');
 Route::post('/addSession', 'AdSettingController@addSession');
 Route::get('/editSession/{n}', 'AdSettingController@editSession');
