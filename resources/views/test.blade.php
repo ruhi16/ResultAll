@@ -24,14 +24,28 @@
     @endforeach
 @endforeach	
 
+<!-- Rectangular switch -->
+<label class="switch">
+  <input type="checkbox">
+  <span class="slider"></span>
+</label>
 
+<!-- Rounded switch -->
+<label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></span>
+</label>
+
+
+
+<input type="checkbox" name="my-checkbox" checked>
 
 </div>
 
 
 <script type="text/javascript">
   $(document).ready(function(e){
-		 
+    
   });
 </script>
 

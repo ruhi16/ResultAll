@@ -46,10 +46,6 @@
 
 
 
-
-
-
-
 {{-- 
     <link rel="stylesheet" type="text/css" href="{{url('bs337/css/bootstrap.min.css')}}" >
     
