@@ -37,13 +37,13 @@
 
        	<div class="col-md-9"> 
 		
-		<div class="row">						
+		<div class="row">	
+			{{$extypes->count()}}
 			<div class="panel panel-default">
 					<!-- Default panel contents -->
 					<div class="panel-heading">
-						<h3 class="panel-title pull-left">Examination Details	</h3>
-							
-							<div class="clearfix"></div>					
+						<h3 class="panel-title pull-left">Examination Details	</h3>							
+							<div class="clearfix"></div>
 					</div>
 							<table class="table table-bordered">
 							<thead>
@@ -59,14 +59,29 @@
 							</thead>
 							<tbody>
 							@foreach($cls as $c)
+							<?php $flag = false; ?>
 								<tr>
-									<td>{{$c->id}}</td>
-									<td>{{$c->cls}}</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>
-									<td></td>
+
+									<td rowspan="{!! $extypes->count() !!}}">{{$c->id}}</td>
+									<td rowspan="{!! $extypes->count() !!}}">{{$c->cls}}</td>
+									@foreach($extypes as $ext)
+										@if($flag == false)
+											<td></td>
+											<td></td>
+											<td></td>
+											<td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>
+											<td></td>
+										@else
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>
+												<td></td>
+											</tr>
+										@endif
+										<?php $flag = true; ?>
+									@endforeach
 								</tr>
 							@endforeach
 							</tbody>
