@@ -52,6 +52,20 @@ Route::get('/clssec',function(){
 });
 
 
+Route::get('/clssub', function(){
+    $session = App\Session::where('Status','=','Current')->get();
+    $cls = App\Clss::all();
+    $sub = App\Subject::all();
+    //echo $session;
+
+    return view('/setting/clssub')
+        ->with('session', $session)
+        ->with('cls', $cls)
+        ->with('subjects', $sub);
+});
+
+
+
 Route::get('/addSec/{n}', 'AdSettingController@addSec');
 Route::get('/delSec/{n}', 'AdSettingController@delSec');
 
@@ -70,6 +84,10 @@ Route::get('/examsch', function(){
     ->with('exmtypes', $exmtypes)
     ->with('rec', $rec);
 });
+
+
+
+
 
 
 

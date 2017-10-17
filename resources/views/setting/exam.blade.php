@@ -24,7 +24,7 @@
 	            <a href="{{url('/session')}}" class="list-group-item">Session Details</a>
 	            <a href="{{url('/clssec')}}"  class="list-group-item">Class & Section Details</a>
 	            <a href="{{url('/examsch')}}" class="list-group-item active">Exam Details</a>
-	            <a href="#" class="list-group-item">Link</a>
+	            <a href="{{url('/clssub')}}"  class="list-group-item">Class Subjects Allotment</a>
 	            <a href="#" class="list-group-item">Link</a>
 	            <a href="#" class="list-group-item">Link</a>
 	            <a href="#" class="list-group-item">Link</a>
@@ -62,6 +62,7 @@
 									<th>Schedule Month</th>
 									<th>Status</th>
 									<th>Action</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -81,7 +82,7 @@
 												<td><a href="{!! url('/editSession',[$session->id]) !!}" class="btn btn-primary">Edit</a></td>
 												<td rowspan="2">{{$ex->schtime}}    </td>										
 												<td rowspan="2">{{$ex->status}}     </td>
-												<td rowspan="2">{{$ex->status}}     </td>
+												<td rowspan="2"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add Subject</button></td>
 											@endif
 											<?php $flag = true; ?>
 										@endforeach

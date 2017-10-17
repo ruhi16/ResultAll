@@ -10,7 +10,7 @@
 
 <div class="container">
 	
-	<h1 class="page-header">Session Details ...</h1>
+	<h1 class="page-header">Examination Details ...</h1>
 	<ol class="breadcrumb">
 		<li><a href="#">Home</a></li>
 		<li><a href="#">Library</a></li>
@@ -21,10 +21,10 @@
 	<div class="row">
 		<div class="col-md-3">	            
 	          <div class="list-group">
-	            <a href="{{url('/session')}}" class="list-group-item active">Session Details</a>
+	            <a href="{{url('/session')}}" class="list-group-item">Session Details</a>
 	            <a href="{{url('/clssec')}}"  class="list-group-item">Class & Section Details</a>
-	            <a href="{{url('/examsch')}}" class="list-group-item">Exam Details</a>
-	            <a href="{{url('/clssub')}}"  class="list-group-item">Class Subjects Allotment</a>
+	            <a href="{{url('/examsch')}}" class="list-group-item ">Exam Details</a>
+	            <a href="{{url('/clssub')}}"  class="list-group-item active">Class Subjects Allotment</a>
 	            <a href="#" class="list-group-item">Link</a>
 	            <a href="#" class="list-group-item">Link</a>
 	            <a href="#" class="list-group-item">Link</a>
@@ -34,61 +34,53 @@
 	          </div>        
 	    </div><!--/1st Column-->
 
-       	<div class="col-md-9">
-           @foreach($sessions as $session)
-              @if($session->Status == 'Current')
-                <h2>Current Session is: {{$session->Name}} <small>From {{$session->stDate}} to {{$session->enDate}} </small></h2>
-              @endif
-            @endforeach
-				<div class="row">
-		   <div class="panel panel-default">
+       	<div class="col-md-9">        
+            <h2>Current Session is: {{$session[0]->Name}} <small>From {{$session[0]->stDate}} to {{$session[0]->enDate}} </small></h2>
+            
+
+
+		<div class="row">
+			<h2>Examination Details in the Current Session </h2>
+			<div class="panel panel-default">
 					<!-- Default panel contents -->
 					<div class="panel-heading">
-						<h3 class="panel-title pull-left">
-							Session Details
-									</h3>
-							<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
-								Add New Session
-							</button>
-							<div class="clearfix"></div>
-					
+						<h3 class="panel-title pull-left">Examination Details	</h3>
+							
+							<div class="clearfix"></div>					
 					</div>
-					{{--  <div class="panel-body">
-						<p>...</p>
-					</div>  --}}
-
-
-
-
-
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-				<th>#</th>
-				<th>Session</th>
-				<th>Start Date</th>
-				<th>End Date</th>
-                <th>Status</th>
-                <th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-                @foreach($sessions as $session)
-				    <tr>
-							<th scope="row">{{$session->id}}</th>
-							<th>{{$session->Name}}</th>
-							<td>{{$session->stDate}}</td>
-							<td>{{$session->enDate}}</td>
-							<td>{{$session->Status}}</td>
-							<td><button class="btn btn-danger">Edit</button>
-									<a href="{!! url('/editSession',[$session->id]) !!}" class="btn btn-primary">Edit</a>
-							</td>
-				    </tr>
-                @endforeach
-			</tbody>
-			</table>
+							<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Sl</th>
+									<th>Classes</th>
+									<th>Category in Each Term</th>
+									<th>Subjects</th>
+									<th>Status</th>
+									<th>Action</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($cls as $c)
+								<tr>
+									<td>{{$c->id}}</td>
+									<td>{{$c->cls}}</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							@endforeach
+							</tbody>
+							</table>
 		</div><!--/panel starting div -->
-    </div><!--/1st row within 2nd column -->
+		</div>
+
+
+
+
+
 
 
 
