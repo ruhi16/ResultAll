@@ -11,6 +11,7 @@
 <div class="container">
 	
 	<h1 class="page-header">Examination Details ...</h1>
+	<h2>Current Session is: {{$session[0]->Name}} <small>From {{$session[0]->stDate}} to {{$session[0]->enDate}} </small></h2>
 	<ol class="breadcrumb">
 		<li><a href="#">Home</a></li>
 		<li><a href="#">Library</a></li>
@@ -34,13 +35,9 @@
 	          </div>        
 	    </div><!--/1st Column-->
 
-       	<div class="col-md-9">        
-            <h2>Current Session is: {{$session[0]->Name}} <small>From {{$session[0]->stDate}} to {{$session[0]->enDate}} </small></h2>
-            
-
-
-		<div class="row">
-			<h2>Examination Details in the Current Session </h2>
+       	<div class="col-md-9"> 
+		
+		<div class="row">						
 			<div class="panel panel-default">
 					<!-- Default panel contents -->
 					<div class="panel-heading">
@@ -53,8 +50,8 @@
 								<tr>
 									<th>Sl</th>
 									<th>Classes</th>
-									<th>Category in Each Term</th>
-									<th>Subjects</th>
+									<th>Subjects : Summative</th>
+									<th>Subjects : Formative</th>
 									<th>Status</th>
 									<th>Action</th>
 									<th>Action</th>
@@ -68,7 +65,7 @@
 									<td></td>
 									<td></td>
 									<td></td>
-									<td></td>
+									<td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>
 									<td></td>
 								</tr>
 							@endforeach
@@ -104,11 +101,11 @@
       </div>
       <div class="modal-body">        
 
-				<div class="form-group">
+		<div class="form-group">
         	<label class="control-label col-sm-3" for="currses">Current Session:</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" id="currses" name="currses" placeholder="Enter Curr. Session">
-					</div>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="currses" name="currses" placeholder="Enter Curr. Session">
+				</div>
 
         	{{--  <label class="control-label col-sm-1" for="clss">Class:</label>
 					<div class="col-sm-2">
@@ -119,31 +116,31 @@
 					</div>  --}}
       	</div>
 
-				<div class="form-group">
+		<div class="form-group">
         	<label class="control-label col-sm-3" for="fromdt">From:</label>
-					<div class="col-sm-4">						
-						<input type="text" class="date form-control" id="fromdt" name="fromdt" placeholder="dd-mm-yyyy">
-					</div>
+				<div class="col-sm-4">						
+					<input type="text" class="date form-control" id="fromdt" name="fromdt" placeholder="dd-mm-yyyy">
+				</div>
 
-					<label class="control-label col-sm-1" for="todt">To:</label>
-					<div class="col-sm-4">
-						<input type="text" class="date form-control" id="todt" name="todt" placeholder="dd-mm-yyyy">
-					</div>
+				<label class="control-label col-sm-1" for="todt">To:</label>
+				<div class="col-sm-4">
+					<input type="text" class="date form-control" id="todt" name="todt" placeholder="dd-mm-yyyy">
+				</div>
       	</div>
 
-				<div class="form-group">
+		<div class="form-group">
         	<label class="control-label col-sm-3" for="prevses">Previo Session:</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" id="prevses" name="prevses" placeholder="Select Prev. Session">
-					</div>					
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="prevses" name="prevses" placeholder="Select Prev. Session">
+				</div>					
       	</div>
 
 				
-      </div>
+      </div><!-- /.modal-body -->
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
+      </div><!-- /.modal-footer -->
 			{!! Form::close() !!}
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
