@@ -128,7 +128,6 @@ class AdSettingController extends Controller
 
 
 
-<<<<<<< HEAD
     public function addSubjForClss(Request $request){
         $ses = Session::where('Status', '=', 'Current')->first();
         
@@ -141,16 +140,6 @@ class AdSettingController extends Controller
             $b = array('extype_id'=>1,'session_id'=>$ses->id);            
             $a = array_fill_keys($request->mybox, $b);
             $cls->subjects()->sync($a,false);
-=======
-    public function addSubjForClss(){
-        $quantities[] = Input::all();//get('mybox');
-
-        //dd($quantities);
-        foreach($quantities[0] as $k =>$v){            
-            print_r($v);
-            echo $k. "<br>";
-            //echo $v ."<br>";
->>>>>>> 18cf07a0352f31b49f0ba11bd327dbe33f8e5492
         }
         //Formative subjects
         if($request->input('mybox1')){

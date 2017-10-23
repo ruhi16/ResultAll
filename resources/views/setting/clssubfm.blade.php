@@ -11,7 +11,7 @@
 <div class="container">
 	
 	<h1 class="page-header">Examination Details ...</h1>
-	<h2>Current Session is: {{$session[0]->Name}} <small>From {{$session[0]->stDate}} to {{$session[0]->enDate}} </small></h2>
+	<h2>Current Session is: {{$session->Name}} <small>From {{$session->stDate}} to {{$session->enDate}} </small></h2>
 	<ol class="breadcrumb">
 		<li><a href="#">Home</a></li>
 		<li><a href="#">Library</a></li>
@@ -38,13 +38,15 @@
 
        	<div class="col-md-9"> 		
 		    <div class="row">
-                	<table class="table table-bordered">
+                	<table class="table table-bordered table-condensed">
 					<tr>
 						<th>sl</th>
 						<th>Class</th>
 						<th>Exam Type</th>
-						<th>Subjects</th>
-						<th>Marks</th>
+						<th>Subjects</th>						
+						@foreach($exam as $ex)
+							<th>{{$ex->name}}</th>
+						@endforeach						
 						<th>Action</th>
 					</tr>
 					{{--  =={{$clssub->where('subject_id','1')}}==  --}}
@@ -58,7 +60,24 @@
 							<td rowspan="{{$cs->count('extype_id')}}">{{$cls->find($cs[0]->clss_id)->cls}}</td>							
 							<td>{{$c->extype_id}}</td>
 							<td>{{$c->subject_id}}</td>
-							<td>{{}}</td>
+							@foreach($exam as $ex)
+								<td>
+								<div class="row">
+									<div class="col-lg-6">
+									<div class="input-group input-group-sm">
+									<span class="input-group-addon input" id="sizing-addon4">FM</span>
+									<input type="text" class="form-control" aria-describedby="sizing-addon4">
+									</div>
+									</div>
+									<div class="col-lg-6">
+									<div class="input-group input-group-sm">
+									<span class="input-group-addon" id="sizing-addon3">PM</span>
+									<input type="text" class="form-control" aria-describedby="sizing-addon3">
+									</div>
+									</div>
+								</div>
+								</td>
+							@endforeach
 							<td></td>
 							</tr>
 							<?php $flag = true; ?>
@@ -68,7 +87,24 @@
 
 							<td>{{$c->extype_id}}</td>
 							<td>{{$c->subject_id}}</td>
-							<td></td>
+							@foreach($exam as $ex)
+								<td>
+								<div class="row">
+									<div class="col-lg-6">
+									<div class="input-group input-group-sm">
+									<span class="input-group-addon input" id="sizing-addon4">FM</span>
+									<input type="text" class="form-control" aria-describedby="sizing-addon4">
+									</div>
+									</div>
+									<div class="col-lg-6">
+									<div class="input-group input-group-sm">
+									<span class="input-group-addon" id="sizing-addon3">PM</span>
+									<input type="text" class="form-control" aria-describedby="sizing-addon3">
+									</div>
+									</div>
+								</div>
+								</td>
+							@endforeach
 							<td></td>							
 							</tr>
 

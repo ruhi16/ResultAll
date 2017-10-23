@@ -107,15 +107,18 @@ Route::get('/refSubjForClss/{$a}', function($a){
 
 
 Route::get('/clssubfm', function(){
-    $session = App\Session::where('Status','=','Current')->get();
+    $session = App\Session::where('Status','=','Current')->first();
     $cls = App\Clss::all();
     $clssub = DB::table('clss_subject')->get();
-
+    $exam = App\Exam::where('session_id', $session->id)->get();
+    //echo $exam;
+    
 
     return view('/setting/clssubfm')
         ->with('session', $session)
         ->with('cls', $cls)
-        ->with('clssub', $clssub);
+        ->with('clssub', $clssub)
+        ->with('exam', $exam);
 });
 
 
