@@ -26,7 +26,7 @@
 	            <a href="{{url('/clssec')}}"  class="list-group-item">Class & Section Details</a>
 	            <a href="{{url('/examsch')}}" class="list-group-item ">Exam Details</a>
 	            <a href="{{url('/clssub')}}"  class="list-group-item active">Class Subjects Allotment</a>
-	            <a href="#" class="list-group-item">Link</a>
+	            <a href="{{url('/clssubfm')}}"class="list-group-item">Subject FM Assignment</a>
 	            <a href="#" class="list-group-item">Link</a>
 	            <a href="#" class="list-group-item">Link</a>
 	            <a href="#" class="list-group-item">Link</a>
@@ -61,23 +61,45 @@
 							@foreach($cls as $c)
 							<?php $flag = false; ?>
 								<tr>
-
 									<td rowspan="{!! $extypes->count() !!}}">{{$c->id}}</td>
 									<td rowspan="{!! $extypes->count() !!}}">{{$c->cls}}</td>
 									@foreach($extypes as $ext)
 										@if($flag == false)
+											<td>
+											@foreach($clssub as $row)
+												@if($row->clss_id == $c->id && $row->extype_id == $ext->id)														
+													@foreach($subjects as $s)
+														@if($s->id == $row->subject_id)
+															{{$s->subj}}<br>
+														@endif
+													@endforeach
+												@endif
+											@endforeach
+											</td>
 											<td></td>
 											<td></td>
-											<td></td>
-											<td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>
-											<td></td>
+											<td><button class="btn btn-primary pull-right opmd" value="{{$c->id}}/{{$c->cls}}/{{$ext->id}}">Edit Subjects</button></td>
+											<td rowspan="{!! $extypes->count() !!}">
+												<a href="{{url('/refSubjForClss', [$c->id])}}" class="btn btn-success pull-right">Refresh</a>
+											</td>
 										@else
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>
-												<td></td>
+											<tr>											
+											<td>
+											@foreach($clssub as $row)
+												@if($row->clss_id == $c->id && $row->extype_id == $ext->id)
+													@foreach($subjects as $s)
+														@if($s->id == $row->subject_id)
+															{{$s->subj}}<br>
+														@endif
+													@endforeach
+												@endif
+											@endforeach
+											</td>
+											<td></td>
+											<td></td>
+											<td><button class="btn btn-primary pull-right opmd" value="{{$c->id}}/{{$c->cls}}/{{$ext->id}}">Edit Subjects</button></td>
+											{{--  <td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>  --}}
+											{{--  <td></td>  --}}
 											</tr>
 										@endif
 										<?php $flag = true; ?>
@@ -88,15 +110,6 @@
 							</table>
 		</div><!--/panel starting div -->
 		</div>
-
-
-
-
-
-
-
-
-
 
 
        	</div><!--/2nd column-->
@@ -115,6 +128,7 @@
         	<h4 class="modal-title">Enter New Session...</h4>
       	</div>
 		<div class="modal-body">    
+			<input type="text"  id="clsid" name="clsid">
 			
 				<div class="row">
 					<div class="col-sm-6">						
@@ -132,7 +146,7 @@
 							@if($subject->extype_id == 1)
 							<tr>							
 								<td>{{$subject->subj}}</td>
-								<td><input type="text" name="mybox[]" value="{{$subject->subj}}"></td>
+								<td><input type="checkbox" name="mybox[]" value="{{$subject->id}}"></td>
 							</tr>
 							@endif
 							@endforeach
@@ -153,7 +167,7 @@
 							@foreach($subjects as $subject)															
 							<tr>							
 								<td>{{$subject->subj}}</td>
-								<td>dd</td>
+								<td><input type="checkbox" name="mybox1[]" value="{{$subject->id}}"></td>
 							</tr>
 							
 							@endforeach
@@ -179,8 +193,18 @@
 <script type="text/javascript">
   $(document).ready(function(e){
 		$('.date').datepicker({  
-      format: 'dd-mm-yyyy' //,changeMonth: false, changeYear: true
-     }); 
+        format: 'dd-mm-yyyy' //,changeMonth: false, changeYear: true
+		});
+		
+
+
+		$('.opmd').click(function(){ 
+			v = $(this).val();
+			//alert(v);
+			$('input[name="clsid"]').val(v);  
+
+			$('#myModal').modal('show');
+		});
   });
 </script>
 

@@ -17,6 +17,7 @@ class CreateClssSubjectTable extends Migration
             $table->increments('id');
             $table->integer('clss_id');
             $table->integer('subject_id');
+            $table->integer('extype_id');
             $table->integer('session_id');
             $table->timestamps();
         });

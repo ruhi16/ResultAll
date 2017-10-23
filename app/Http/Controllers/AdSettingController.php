@@ -9,6 +9,7 @@ use DB;
 use App\Session;
 use App\Clss;
 use App\Section;
+use App\Subject;
 
 
 
@@ -100,7 +101,7 @@ class AdSettingController extends Controller
 
 
     public function delSec($id){
-        $ses = Session::where('Status', '=', 'Current')->get();
+        $ses = Session::where('Status', '=', 'Current')->first();
         $cls = Clss::find($id);
     
         $m = DB::table('clss_section')
@@ -113,7 +114,7 @@ class AdSettingController extends Controller
         //echo "Max:".$m;
         //echo "Max:".$n;
         if($m > 0){
-            $cls->sections()->detach($m,['session_id'=>$ses]);
+            $cls->sections()->detach($m,['session_id'=>$ses->id]);
         }
         // foreach($cls->sections as $c){
         //     echo $c."<br>";
@@ -127,14 +128,28 @@ class AdSettingController extends Controller
 
 
 
-    public function addSubjForClss(){
-        $quantities[] = Input::get('mybox');
-
-        foreach($quantities as $v){
-
-            print_r ($v);
+    public function addSubjForClss(Request $request){
+        $ses = Session::where('Status', '=', 'Current')->first();
+        
+        $arr = explode('/',$request->clsid);
+        
+        $cls = Clss::find($arr[0]);  
+        //Summative subjects
+        
+        if($request->input('mybox')){            
+            $b = array('extype_id'=>1,'session_id'=>$ses->id);            
+            $a = array_fill_keys($request->mybox, $b);
+            $cls->subjects()->sync($a,false);
         }
-
+        //Formative subjects
+        if($request->input('mybox1')){
+            $b = array('extype_id'=>2,'session_id'=>$ses->id);            
+            $a = array_fill_keys($request->mybox1, $b);
+            $cls->subjects()->sync($a,false);
+        }
+        return back();
     }
+
+
 
 }

@@ -25,7 +25,7 @@
 	            <a href="{{url('/clssec')}}"  class="list-group-item">Class & Section Details</a>
 	            <a href="{{url('/examsch')}}" class="list-group-item">Exam Details</a>
 	            <a href="{{url('/clssub')}}"  class="list-group-item">Class Subjects Allotment</a>
-	            <a href="#" class="list-group-item">Link</a>
+	            <a href="{{url('/clssubfm')}}"class="list-group-item">Subject FM Assignment</a>
 	            <a href="#" class="list-group-item">Link</a>
 	            <a href="#" class="list-group-item">Link</a>
 	            <a href="#" class="list-group-item">Link</a>

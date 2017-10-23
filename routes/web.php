@@ -57,13 +57,15 @@ Route::get('/clssub', function(){
     $cls = App\Clss::all();
     $sub = App\Subject::all();
     $extypes = App\Extype::all();
+    $clssub = DB::table('clss_subject')->get();
     //echo $session;
-
+    //dd($clssub);
     return view('/setting/clssub')
         ->with('session', $session)
         ->with('cls', $cls)        
         ->with('subjects', $sub)
-        ->with('extypes', $extypes);
+        ->with('extypes', $extypes)
+        ->with('clssub', $clssub);
 });
 
 Route::post('/addSubjForClss', 'AdSettingController@addSubjForClss');
@@ -88,6 +90,34 @@ Route::get('/examsch', function(){
     ->with('exmtypes', $exmtypes)
     ->with('rec', $rec);
 });
+
+Route::get('/refSubjForClss/{$a}', function($a){
+    $cls = Clss::find($a);
+    //$cls->subjects()->sync([]);
+    //return "hi";
+});
+
+
+
+
+
+
+
+
+
+
+Route::get('/clssubfm', function(){
+    $session = App\Session::where('Status','=','Current')->get();
+    $cls = App\Clss::all();
+    $clssub = DB::table('clss_subject')->get();
+
+
+    return view('/setting/clssubfm')
+        ->with('session', $session)
+        ->with('cls', $cls)
+        ->with('clssub', $clssub);
+});
+
 
 
 
