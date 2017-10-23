@@ -23,7 +23,7 @@
 		<div class="col-md-3">	            
 	          <div class="list-group">
 	            <a href="{{url('/session')}}" class="list-group-item">Session Details</a>
-	            <a href="{{url('/clssec')}}"  class="list-group-item">Class &#38 Section Details</a>
+	            <a href="{{url('/clssec')}}"  class="list-group-item">Class & Section Details</a>
 	            <a href="{{url('/examsch')}}" class="list-group-item ">Exam Details</a>
 	            <a href="{{url('/clssub')}}"  class="list-group-item active">Class Subjects Allotment</a>
 	            <a href="{{url('/clssubfm')}}"class="list-group-item">Subject FM Assignment</a>
@@ -146,15 +146,7 @@
 							@if($subject->extype_id == 1)
 							<tr>							
 								<td>{{$subject->subj}}</td>
-<<<<<<< HEAD
 								<td><input type="checkbox" name="mybox[]" value="{{$subject->id}}"></td>
-=======
-								<td><input type="checkbox" name="mybox[]" value="{{$subject->subj}}"></td>
-							</tr>
-							<tr>							
-								<td>{{$subject->subj}}</td>
-								<td><input type="checkbox" name="mybox1[]" value="{{$subject->subj}}"></td>
->>>>>>> 18cf07a0352f31b49f0ba11bd327dbe33f8e5492
 							</tr>
 							@endif
 							@endforeach
