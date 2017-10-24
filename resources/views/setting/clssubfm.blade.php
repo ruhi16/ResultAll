@@ -78,8 +78,8 @@
 								</div>
 								</td>
 							@endforeach
-							<td></td>
-							</tr>
+							<td><button class="btn btn-primary">Update</button></td>
+ 							</tr>
 							<?php $flag = true; ?>
 							@else
 							<tr>
@@ -105,7 +105,7 @@
 								</div>
 								</td>
 							@endforeach
-							<td></td>							
+							<td><button class="btn btn-primary">Update</button></td>							
 							</tr>
 
 							@endif
