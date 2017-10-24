@@ -41,6 +41,9 @@ Route::get('/clssec',function(){
 });
 
 
+Route::get('/addSec/{n}', 'AdSettingController@addSec');
+Route::get('/delSec/{n}', 'AdSettingController@delSec');
+
 
 
 Route::post('/register-submit', 'AdminController@registerSubmit');
