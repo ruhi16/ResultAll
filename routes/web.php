@@ -28,6 +28,17 @@ Route::get('/setting', function(){
     return view('/setting/setting');
 });
 
+
+Route::get('/test', function(){
+    $cls = App\Clss::all();
+    $sts = DB::table('clss_exam_extype_status')->get();
+
+    return view('test')
+        ->with('cls', $cls)
+        ->with('sts', $sts);
+});
+
+
 Route::get('/session', 'AdSettingController@session');
 Route::post('/addSession', 'AdSettingController@addSession');
 Route::get('/editSession/{n}', 'AdSettingController@editSession');
@@ -43,6 +54,23 @@ Route::get('/clssec',function(){
 
 Route::get('/addSec/{n}', 'AdSettingController@addSec');
 Route::get('/delSec/{n}', 'AdSettingController@delSec');
+
+
+
+Route::get('/examsch', function(){
+    $sessions = App\Session::all();
+    $exms = App\Exam::all();
+    $exmtypes = App\Extype::all();
+
+    $rec = App\Extype::count();
+
+    return view('/setting/exam')
+    ->with('sessions', $sessions)
+    ->with('exms', $exms)
+    ->with('exmtypes', $exmtypes)
+    ->with('rec', $rec);
+});
+
 
 
 
