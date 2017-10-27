@@ -13,4 +13,8 @@ class Clss extends Model
     public function exams(){
         return $this->belongsToMany('App\Exam');
     }
+
+    public function subjects(){
+        return $this->belongsToMany('App\Subject');
+    }
 }
