@@ -66,6 +66,8 @@ Route::get('/clssub', function(){
         ->with('extypes', $extypes);
 });
 
+Route::post('/addSubjForClss', 'AdSettingController@addSubjForClss');
+
 
 
 Route::get('/addSec/{n}', 'AdSettingController@addSec');

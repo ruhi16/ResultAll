@@ -38,7 +38,7 @@
        	<div class="col-md-9"> 
 		
 		<div class="row">	
-			{{$extypes->count()}}
+			{{--  {{$extypes->count()}}  --}}
 			<div class="panel panel-default">
 					<!-- Default panel contents -->
 					<div class="panel-heading">
@@ -76,7 +76,7 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>
+												<td><a href="{{url('/editSubjects', [$c->id])}}" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Edit Subjects</a></td>
 												<td></td>
 											</tr>
 										@endif
@@ -109,54 +109,66 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
   <div class="modal-dialog " role="document">
     <div class="modal-content">
-      {!! Form::open(['url'=>'/addSession','method'=>'post', 'class'=>'form-horizontal']) !!}
-			<div class="modal-header">
+      {!! Form::open(['url'=>'/addSubjForClss','method'=>'post', 'class'=>'form-horizontal']) !!}
+		<div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Enter New Session...</h4>
-      </div>
-      <div class="modal-body">        
-
-		<div class="form-group">
-        	<label class="control-label col-sm-3" for="currses">Current Session:</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="currses" name="currses" placeholder="Enter Curr. Session">
-				</div>
-
-        	{{--  <label class="control-label col-sm-1" for="clss">Class:</label>
-					<div class="col-sm-2">
-						<select class="form-control" name="clss" id="cl">
-							<option value="0"></option>
+        	<h4 class="modal-title">Enter New Session...</h4>
+      	</div>
+		<div class="modal-body">    
+			
+				<div class="row">
+					<div class="col-sm-6">						
+						<table class="table table-bordered">
+							<caption>Summative</caption>
+							<thead>
+								<tr>
+									<th>Suubject</th>
+									<th>Option</th>
+								</tr>
+							</thead>
+							<tbody>
 							
-						</select>
-					</div>  --}}
-      	</div>
-
-		<div class="form-group">
-        	<label class="control-label col-sm-3" for="fromdt">From:</label>
-				<div class="col-sm-4">						
-					<input type="text" class="date form-control" id="fromdt" name="fromdt" placeholder="dd-mm-yyyy">
-				</div>
-
-				<label class="control-label col-sm-1" for="todt">To:</label>
-				<div class="col-sm-4">
-					<input type="text" class="date form-control" id="todt" name="todt" placeholder="dd-mm-yyyy">
-				</div>
-      	</div>
-
-		<div class="form-group">
-        	<label class="control-label col-sm-3" for="prevses">Previo Session:</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="prevses" name="prevses" placeholder="Select Prev. Session">
-				</div>					
-      	</div>
-
+							@foreach($subjects as $subject)								
+							@if($subject->extype_id == 1)
+							<tr>							
+								<td>{{$subject->subj}}</td>
+								<td><input type="text" name="mybox[]" value="{{$subject->subj}}"></td>
+							</tr>
+							@endif
+							@endforeach
+							
+							</tbody>
+						</table>											
+					</div><!-- /.1st Column -->
+					<div class="col-sm-6">
+						<table class="table table-bordered">
+							<caption>Formative</caption>
+							<thead>
+								<tr>
+									<th>Suubject</th>
+									<th>Option</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($subjects as $subject)															
+							<tr>							
+								<td>{{$subject->subj}}</td>
+								<td>dd</td>
+							</tr>
+							
+							@endforeach
+							</tbody>
+							</table>
+					</div><!-- /.2nd Column -->
+				</div><!-- /.row -->
 				
-      </div><!-- /.modal-body -->
+			
+		</div><!-- /.modal-body -->
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div><!-- /.modal-footer -->
-			{!! Form::close() !!}
+	{!! Form::close() !!}
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

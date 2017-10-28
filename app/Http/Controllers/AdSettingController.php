@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 use DB;
 use App\Session;
@@ -119,6 +120,21 @@ class AdSettingController extends Controller
         // }
         
         return back();
+    }
+
+
+
+
+
+
+    public function addSubjForClss(){
+        $quantities[] = Input::get('mybox');
+
+        foreach($quantities as $v){
+
+            print_r ($v);
+        }
+
     }
 
 }
