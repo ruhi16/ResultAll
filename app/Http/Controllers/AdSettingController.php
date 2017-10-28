@@ -128,11 +128,13 @@ class AdSettingController extends Controller
 
 
     public function addSubjForClss(){
-        $quantities[] = Input::get('mybox');
+        $quantities[] = Input::all();//get('mybox');
 
-        foreach($quantities as $v){
-
-            print_r ($v);
+        //dd($quantities);
+        foreach($quantities[0] as $k =>$v){            
+            print_r($v);
+            echo $k. "<br>";
+            //echo $v ."<br>";
         }
 
     }
