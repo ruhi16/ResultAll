@@ -146,15 +146,11 @@
 							@if($subject->extype_id == 1)
 							<tr>							
 								<td>{{$subject->subj}}</td>
-<<<<<<< HEAD
-								<td><input type="checkbox" name="mybox[]" value="{{$subject->id}}"></td>
-=======
 								<td><input type="checkbox" name="mybox[]" value="{{$subject->subj}}"></td>
 							</tr>
 							<tr>							
 								<td>{{$subject->subj}}</td>
 								<td><input type="checkbox" name="mybox1[]" value="{{$subject->subj}}"></td>
->>>>>>> 18cf07a0352f31b49f0ba11bd327dbe33f8e5492
 							</tr>
 							@endif
 							@endforeach

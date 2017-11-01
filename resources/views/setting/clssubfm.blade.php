@@ -50,11 +50,11 @@
 						<th>Action</th>
 					</tr>
 					{{--  =={{$clssub->where('subject_id','1')}}==  --}}
-					
+					{{--  {{$clssub->groupby('clss_id')}}  --}}
 					@foreach($clssub->groupby('clss_id') as $cs)					
 						<?php $flag = false; ?>
 						@foreach($cs as $c)
-							@if($flag == false)
+						@if($flag == false)
 							<tr>
 							<td>{{$c->id}}</td>
 							<td rowspan="{{$cs->count('extype_id')}}">{{$cls->find($cs[0]->clss_id)->cls}}</td>							
@@ -78,10 +78,10 @@
 								</div>
 								</td>
 							@endforeach
-							<td><button class="btn btn-primary">Update</button></td>
+							<td><button class="btn btn-primary acbt" value="cls:{{$cs[0]->clss_id}}-ext:{{$c->extype_id}}-sub:{{$c->subject_id}}">Update</button></td>
  							</tr>
 							<?php $flag = true; ?>
-							@else
+						@else
 							<tr>
 							<td>{{$c->id}}</td>
 
@@ -92,23 +92,23 @@
 								<div class="row">
 									<div class="col-lg-6">
 									<div class="input-group input-group-sm">
-									<span class="input-group-addon input" id="sizing-addon4">FM</span>
-									<input type="text" class="form-control" aria-describedby="sizing-addon4">
+									<span class="input-group-addon" id="sizing-addon4">FM</span>
+									<input type="text" class="form-control fmark-{{$cs[0]->clss_id}}-{{$c->extype_id}}-{{$c->subject_id}}" aria-describedby="sizing-addon4" name="">
 									</div>
 									</div>
 									<div class="col-lg-6">
 									<div class="input-group input-group-sm">
 									<span class="input-group-addon" id="sizing-addon3">PM</span>
-									<input type="text" class="form-control" aria-describedby="sizing-addon3">
+									<input type="text" class="form-control" value="" aria-describedby="sizing-addon3">
 									</div>
 									</div>
 								</div>
 								</td>
 							@endforeach
-							<td><button class="btn btn-primary">Update</button></td>							
+							<td><button class="btn btn-primary acbt" value="cls:{{$cs[0]->clss_id}}-ext:{{$c->extype_id}}-sub:{{$c->subject_id}}">Update</button></td>
 							</tr>
 
-							@endif
+						@endif
 						@endforeach
 					
 					@endforeach
@@ -144,7 +144,12 @@
 
 <script type="text/javascript">
   $(document).ready(function(e){
-		
+		$('.acbt').click(function(){ 
+			//v = $(this).val();
+			//alert(v);
+			v=$('.fmark-2-2-2').val(); 
+			alert(v);
+		});
   });
 </script>
 
