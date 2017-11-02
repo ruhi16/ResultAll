@@ -66,7 +66,7 @@
 									<div class="col-lg-6">
 									<div class="input-group input-group-sm">
 									<span class="input-group-addon input" id="sizing-addon4">FM</span>
-									<input type="text" class="form-control" aria-describedby="sizing-addon4">
+									<input type="text" class="form-control" aria-describedby="sizing-addon4" Name="cls{{$cs[0]->clss_id}}-sub{{$c->subject_id}}-exm-fm[]">
 									</div>
 									</div>
 									<div class="col-lg-6">
@@ -78,7 +78,7 @@
 								</div>
 								</td>
 							@endforeach
-							<td><button class="btn btn-primary acbt" value="cls:{{$cs[0]->clss_id}}-ext:{{$c->extype_id}}-sub:{{$c->subject_id}}">Update</button></td>
+							<td><button class="btn btn-primary acbt">Update</button></td>
  							</tr>
 							<?php $flag = true; ?>
 						@else
@@ -147,8 +147,12 @@
 		$('.acbt').click(function(){ 
 			//v = $(this).val();
 			//alert(v);
-			v=$('.fmark-2-2-2').val(); 
-			alert(v);
+			//v=$('.fmark-2-2-2').val(); 
+			//v = $("input[name=cls2-sub1-exm1-fm]").val(); alert(v);
+			$('input[name^="cls2-sub1-exm-fm"]').each(function() {
+    			alert($(this).val());
+			});
+			//alert("hello");
 		});
   });
 </script>
